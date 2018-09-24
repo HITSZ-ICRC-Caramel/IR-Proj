@@ -23,14 +23,14 @@ page_dir = os.path.join(cwd, 'page')
 def resonse_user():
     try:
         if request.method == 'GET':
-            return render_template('template.html', result_list=[])
+            return render_template('template.html', input='', result_list=[])
         elif request.method == 'POST':
             # print(request.form)
             value = request.form.get("input")
             data_list = model.search(value)
             # data_list = ['d633a115e363.md', '7dea5e957101.md']
             result_list = [(v, url_temp.format(v.split('.')[0])) for v in data_list]
-            return render_template('template.html', result_list=result_list)
+            return render_template('template.html', input=value, result_list=result_list)
     except Exception as e:
         print(e)
         return render_template("template.html")
