@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-3.3.7-dist/css/bootstrap.min.css') }}" />
+    <meta charset="utf-8" />
+    <title>Boolean Retrieval System</title>
+</head>
+<body>
+<div class="container">
+    <h3>Boolean Retrieval System</h3>
+    <div class="row">
+        <form action="/" method="post">
+             <span>
+                <input class="col-md-7 form-control" name="input" style="width: 90%;">
+            </span>
+            <span>
+                <button type="submit" class="btn btn-info col-md-1" id="query" style="width: 10%;">检索</button>
+            </span>
+        </form>
+    </div>
+    <hr>
+    <div class="row">
+    {% if result_list %}
+        {% for res in result_list %}
+        <li><a href="{{ res[1] }}" target="_blank">{{ res[1] }}</a> &nbsp;&nbsp; | <span><a href="/md/{{ res[0] }}" target="_blank">快照</a> </span></li>
+        {% endfor %}
+    {% endif %}
+    </div>
+
+
+</div>
+</body>
+</html>

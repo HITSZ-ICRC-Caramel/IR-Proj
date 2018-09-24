@@ -43,12 +43,12 @@ class JianShuSpider(scrapy.Spider):
         next_urls = self.get_urls_from_same_domain(domain, response)
         if next_urls:
             for url in next_urls:
-                self.log('get url:')
+                self.log('get url')
                 yield scrapy.Request(url, callback=self.parse, meta={'domain': domain}, headers=self.base_headers)
 
 
     def get_urls_from_same_domain(self, domain, response):
-        print('----------------------')
+        # print('----------------------')
         sel = Selector(response)
         urls = set([response.urljoin(href.extract()) for href in sel.xpath('//@href')])
         urls_same_domain = [url for url in urls if url.startswith(domain)]
