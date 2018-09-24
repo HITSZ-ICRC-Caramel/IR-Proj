@@ -3,7 +3,6 @@ import glob
 import jieba
 import re
 from collections import defaultdict
-import pandas as pd
 
 ptn = re.compile(r'[\s+\.\!\/_,$%^*(+\"\')]+|[+——()?【】“”！，。×》〕:《〈？、~@#￥%……&*（）]+')
 en = re.compile('[a-zA-Z0-9]+')
